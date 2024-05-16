@@ -81,7 +81,11 @@ services:
             - clamd
 
     rspamd-mailcow:
-      image: mailcow/rspamd:1.95
+      # image: mailcow/rspamd:1.95 <- kept for reference
+      # build image from data/Dockerfiles/rspamd
+      build:
+          context: ./data/Dockerfiles/rspamd
+          dockerfile: Dockerfile
       stop_grace_period: 30s
       depends_on:
         - dovecot-mailcow
